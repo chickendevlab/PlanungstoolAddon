@@ -34,9 +34,9 @@ function loadConferences(id) {
 
                         hinweis.contents().each((index, e) => {
                             $e = $(e)
-                            if($e.prop('tagName') === 'A'){
+                            if ($e.prop('tagName') === 'A') {
                                 const data = $e.attr('href')
-                                if(data.includes('bbb.schullogin.de')){
+                                if (data.includes('bbb.schullogin.de')) {
                                     conference.href = data
                                     conference.location = 'Auf Schullogin.de'
                                 }
@@ -63,19 +63,19 @@ function loadConferences(id) {
 function validateId(input) {
     return new Promise((resolve, reject) => {
         let out
-        if(input.length == 4){
+        if (input.length == 4) {
             out = input
-        } else if (input.includes('planungstool-fsg.de')){
-            try{
+        } else if (input.includes('planungstool-fsg.de')) {
+            try {
                 const url = new URL(input)
                 const arr = url.pathname.split('/')
-                if(arr[arr.length - 1] === ''){
+                if (arr[arr.length - 1] === '') {
                     arr.pop()
                 }
 
-                if(arr[arr.length - 1].length == 4){
-                    out = arr[arr.length -1]
-                }else{
+                if (arr[arr.length - 1].length == 4) {
+                    out = arr[arr.length - 1]
+                } else {
                     resolve(false)
                     return
                 }
@@ -95,10 +95,10 @@ function validateId(input) {
     })
 }
 
-function getAccounts(){
+function getAccounts() {
     return new Promise((resolve, reject) => {
-        chrome.storage.sync.get(['accounts'], (data) => {
-            if(data.accounts){
+        browser.storage.sync.get(['accounts']).then((data) => {
+            if (data.accounts) {
                 resolve(data.accounts)
             } else {
                 resolve([])
@@ -107,12 +107,14 @@ function getAccounts(){
     })
 }
 
-function saveAccounts(accounts){
+
+
+
+
+function saveAccounts(accounts) {
     return new Promise((resolve, reject) => {
         chrome.storage.sync.set({
             accounts: accounts
-        }, (data) => {
-            resolve(true)
-        })
+        }).then(d => resolve(true))
     })
 }
