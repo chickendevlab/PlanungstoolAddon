@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Planungstool Addon</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/background.css">
+    <link rel="stylesheet" href="assets/css/settings.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="background: linear-gradient(135deg, rgb(0,68,170) 0%, #1e90ff 76%), rgb(66,148,167);filter: brightness(102%);">
+    <div class="login-dark" style="width: 400px;">
+        <form method="post" id="form" >
+            <h2 class="sr-only">Login Form</h2>
+            <div>
+                <header
+                    style="text-align: center;border-bottom-style: solid;border-bottom-color: rgb(160,160,160);margin-bottom: 20px;">
+                    <span style="font-size: 26px;">Accounts</span>
+                </header>
+            </div>
+            <div class="form-group"><select class="form-control" id="options">
+                    <optgroup label="Account wählen" id="users">
+                    </optgroup>
+                    <optgroup label="Operationen">
+                        <option value="create" id="add" selected>Hinzufügen</option>
+                        <option value="delete" id="delete">Löschen</option>
+                    </optgroup>
+                </select><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Wähle hier, was du
+                    machen willst.</label></div>
+            <div class="form-group" id="delete-input" style="display: none;"><select class="form-control"
+                    id="delete-select">
+                </select><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Wähle den Account aus,
+                    den du löschen möchtest.</label></div>
+            <div class="form-group" id="name-input"><input class="form-control" type="text" placeholder="Lernsax-Name"
+                    id="name">
+                <div style="text-align: right;"><label id="invalid-name"
+                        style="color: var(--danger);font-size: 10px; display: none;">* Dieser Name ist bereits in
+                        Verwendung!</label></div><label
+                    style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Deinen Lernsax-Namen erhälst du,
+                    indem du bei deiner Lernsax-Email das "@fsg.lernsax.de" entfernst.</label>
+            </div>
+            <div class="form-group" id="id-input"><input class="form-control" type="text"
+                    placeholder="Klassen-ID oder URL" id="id">
+                <div style="text-align: right;"><label id="invalid-id"
+                        style="color: var(--danger);font-size: 10px; display: none;">* Die angegebene ID bzw. URL ist
+                        ungültig</label></div><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Du
+                    bekommst von deinem Klassenlehrer einen Link in der Form https://planungstool-fsg.de/id/XXXX. Du
+                    kannst entweder XXXX oder den gesamten Link eingeben.</label>
+            </div>
+            <div class="form-group"><button class="btn btn-primary btn-block" id="save" type="button"
+                    style="background: #1e90ff;">Speichern</button>
+            </div>
+            <div class="text-center"><a id="back" href="index.html" text-light"
+                    style="/*text-shadow: 0px 0px 20px #fff;*//*font-size: 15px;*/color: rgb(249,249,249);text-decoration: none;"><i
+                        class="fa fa-arrow-circle-left" style="margin-right: 10px;"></i>Zurück</a></div>
+        </form>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../scripts/misc/jquery.js"></script>
+    <script src="../scripts/content/loadConferences.js"></script>
+    <script src="../scripts/popup/main.js"></script>
+</body>
+
+</html>
