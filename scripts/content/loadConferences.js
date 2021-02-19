@@ -98,7 +98,11 @@ function validateId(input) {
 function getAccounts(){
     return new Promise((resolve, reject) => {
         chrome.storage.sync.get(['accounts'], (data) => {
-            resolve(data.accounts)
+            if(data.accounts){
+                resolve(data.accounts)
+            } else {
+                resolve([])
+            }
         })
     })
 }
