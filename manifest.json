@@ -14,7 +14,8 @@
             "js": [
                 "./scripts/misc/jquery.js",
                 "./scripts/content/loadConferences.js",
-                "./scripts/content/statusPage.js"
+                "./scripts/content/statusPage.js",
+                "./scripts/content/utils.js"
             ],
             "run_at": "document_end",
             "all_frames": true
