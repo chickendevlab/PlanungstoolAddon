@@ -107,6 +107,28 @@ function getAccounts(){
     })
 }
 
+function getIgnoredLSAccounts(){
+    return new Promise((resolve, reject) => {
+        chrome.storage.sync.get(['ignoredAccounts'], (data) => {
+            if(data.ignoredAccounts){
+                resolve(data.ignoredAccounts)
+            } else {
+                resolve([])
+            }
+        })
+    })
+}
+
+function saveIgnoredLSAccounts(accounts){
+    return new Promise((resolve, reject) => {
+        chrome.storage.sync.set({
+            ignoredAccounts: accounts
+        }, (data) => {
+            resolve(true)
+        })
+    })
+}
+
 function saveAccounts(accounts){
     return new Promise((resolve, reject) => {
         chrome.storage.sync.set({

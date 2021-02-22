@@ -54,6 +54,10 @@ $('#save').click(() => {
                             id: isValid
                         })
                         saveAccounts(accounts)
+                        getIgnoredLSAccounts().then(ignoredAcc => {
+                            removeItemFromArray(ignoredAcc, $('#name').val())
+                            saveIgnoredLSAccounts(ignoredAcc)
+                        })
                         populateAccounts()
                     } else {
                         $('#invalid-id').show()
