@@ -1,7 +1,7 @@
 {
     "name": "Planungstool-Addon",
     "version": "1.0",
-    "manifest_version": 3,
+    "manifest_version": 2,
     "description": "Dieses Addon bindet die wichtigsten Funktionen von https://www.planungstool-fsg.de/ direkt in LernSax ein!",
     "icons": {
         "128": "./icon/icon128.png"
@@ -24,7 +24,7 @@
     "permissions": [
         "storage"
     ],
-    "action": {
+    "browser_action": {
         "default_popup": "./popup/index.html"
     }
 }
