@@ -1,0 +1,160 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Planungsyssystem für Konferenzen und Arbeiten</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="theme-color" content="#1e90ff" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Abel|Roboto:Light|Lobster&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+  h1 {
+    color: DodgerBlue;
+    font-size: 30px;
+    font-family: Montserrat;
+    padding: 0;
+    text-transform: uppercase;
+    margin: 0px 0px 10px 0px;
+  }
+
+  h2 {
+    color: DodgerBlue;
+    font-size: 18px;
+    font-family: Montserrat;
+    padding: 20px 0px;
+    text-transform: uppercase;
+    margin: 0px 0px 10px 0px;
+  }
+
+  a {
+    color: MediumAquaMarine;
+    text-decoration: none;
+  }
+
+  body {
+    padding: 5px;
+    font-family: Roboto, Arial;
+    font-size: 15px;
+    color: black;
+  }
+
+  .knopf {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-transform: uppercase;
+    color: white;
+    padding: 8px;
+    margin: 15px 0px 0px 0px;
+    font-size: 17px;
+    transition: all 0.2s;
+    outline: none;
+    font-family: Abel, Arial;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border-radius: 50px;
+    border: 1.5px solid DodgerBlue;
+    background-color: DodgerBlue;
+  }
+
+  .knopf:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    transition: all 0.2s;
+  }
+
+  img {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .form {
+    width: 80%;
+    max-width: 550px;
+    margin: 50px 20px;
+    padding: 30px 30px;
+    background: white;
+    text-align: left;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2)
+  }
+
+  .fehlernummer {
+    width: 100%;
+    color: #E6E6E6;
+    font-size: 100px;
+  }
+
+  .installer-link {
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-transform: uppercase;
+    color: white;
+    padding: 8px;
+    margin: 15px 0px 0px 0px;
+    font-size: 17px;
+    transition: all 0.2s;
+    outline: none;
+    font-family: Abel, Arial;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+    border-radius: 50px;
+    border: 1.5px solid DodgerBlue;
+    background-color: DodgerBlue;
+    margin-top: 0.5em;
+    align-content: center;
+  }
+</style>
+<center>
+  <div class="form">
+    <center><img src="./img/input.svg">
+      <p>
+      <h1>Einbindung in lernsax</h1>
+    </center>
+    <h2>Schritt 1: Addon installieren</h2>
+    Als erstes musst du das Addon für deinen Browser installieren. Dies ist eigentlich selbsterklärend, du musst nur dem
+    Link zu dem Installer folgen:
+    <br><a class="installer-link"
+      href="https://addons.opera.com/de/extensions/details/09470a795e95751abd2c8a1ce512ea2b25647f1e/">Opera</a>
+    <a class="installer-link" href="https://addons.mozilla.org/de/firefox/addon/planungstool-fsg/">Firefox (wird zurzeit
+      überprüft)</a>
+    <br>
+    <em>Bitte beachte: für einige Browser ist das Addon noch nicht veröffentlicht (Chrome, Firefox & Edge). Für Safari
+      wird es allerdings keinen Support geben, da diese zum Veröffentlichen eine Gebühr von ca. 95€/Jahr verlangen.</em>
+
+    <h2>Schritt 2: Addon anzeigen lassen</h2>
+    Dieser Schritt ist nur für Chrome & Opera notwendig.
+    <br>
+    <details>
+      <summary>Opera</summary>
+      Bei Opera ist oben rechts, neben der Adressbar eine Reihe von Zeichen: <img src="img/opera.png">
+      <br>Wenn du das Markierte Symbol anklickst, sollte sich dieses Fenster öffnen: <img src="img/opera2.png">
+      <br>Nun sollte das Addon auch neben der Adressbar angezeigt werden.
+    </details>
+    <details>
+      <summary>Chrome</summary>
+      Dieser Teil wird aktualisiert, sobald das Addon für Chrome veröffentlicht ist.
+
+    </details>
+
+    <h2>Schritt 3: einen Account hinzufügen</h2>
+    Jetzt, wo du das Addon schön sichtbar in deinem Browser hast, musst du nur noch einen Account hinzufügen,
+    damit dir deine Konferenzen in LernSax angezeigt werden:
+    <ol>
+      <li>Klicke auf das Addon-Symbol</li>
+      <li>Klicke auf Accounts</li>
+      <li>Wähle "Hinzufügen"</li>
+      <li>Gebe nun bei LernSax-Namen deine LernSax-Email-Adresse ein, sowie bei Klassen-ID die ID deiner Klasse auf
+        planungstool-fsg.de. Diese ID sind die letzten 4 Buchstaben des Links, der zu deinen Konferenzen führt:
+        <br><br>
+        <center>https://planungstool-fsg.de/id/<b>abcd</b></center>
+        <br>
+        Alternativ kannst du auch einfach direkt den Link eingeben.
+      </li>
+    </ol>
+    Wenn du alles richtig gemacht hast, sollten dir nun auf LernSax deine Konferenzen angezeigt werden, direkt auf der
+    Startseite.
+    <h2>Du brauchst Hilfe?</h2>
+    Hilfe erhälst du bei bistry.elias16@fsg.lernsax.de, sowie bei <a href="https://forms.gle/GwXewfCPiDeSsYuFA">diesem</a> Formular.
+  </div>
+  <br>
+  <br><br>
+  <a href="https://planungstool-fsg.de/impressum">Impressum</a> | <a
+    href="https://planungstool-fsg.de/datenschutz">Datenschutz</a>
