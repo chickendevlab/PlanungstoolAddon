@@ -95,6 +95,16 @@ function validateId(input) {
     })
 }
 
+function validateTeacherId(input) {
+    return new Promise((resolve, reject) => {
+        fetch('https://planungstool-fsg.de/klassen_id.php?lehrer_id=' + input).then(r => r.text()).then(t => {
+            resolve((t.includes('nomatch') ? false : input))
+        }).catch(err => {
+            resolve(false)
+        })
+    })
+}
+
 function getAccounts(){
     return new Promise((resolve, reject) => {
         chrome.storage.sync.get(['accounts'], (data) => {
@@ -135,6 +145,25 @@ function saveAccounts(accounts){
             accounts: accounts
         }, (data) => {
             resolve(true)
+        })
+    })
+}
+
+function loadClassesByTeacherId(id) {
+    return new Promise((resolve, reject) => {
+        fetch('https://planungstool-fsg.de/klassen_id.php?lehrer_id=' + id).then(r => r.text()).then(t => {
+            const dom = $('<html><body>' +t + '</body></html>')
+            let ret = []
+            $('span', dom).each((index, element) => {
+                ret.push({
+                    id: $(element).attr('data-id'),
+                    name: $(element).text()
+                })
+            })
+
+            resolve(ret)
+        }).catch(err => {
+            reject(err)
         })
     })
 }

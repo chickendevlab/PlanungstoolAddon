@@ -7,6 +7,7 @@ $('input[type=text]').change(() => {
     $('#invalid-id').hide()
     $('#invalid-name').hide()
 })
+
 $('#options').change(() => {
     let toChange
     if ($($("select#options option:selected").get(0)).hasClass('user')) {
@@ -20,16 +21,19 @@ $('#options').change(() => {
             $('#name-input').show()
             $('#id-input').show()
             $('#delete-input').hide()
+            $('#input-type').show()
             break
         case 'delete':
             $('#name-input').hide()
             $('#id-input').hide()
             $('#delete-input').show()
+            $('#input-type').hide()
             break
         case 'user':
             $('#name-input').hide()
             $('#id-input').show()
             $('#delete-input').hide()
+            $('#input-type').hide()
 
     }
 })
@@ -47,22 +51,46 @@ $('#save').click(() => {
             })
 
             if (b) {
-                validateId($('#id').val()).then((isValid) => {
-                    if (isValid) {
-                        accounts.push({
-                            name: $('#name').val(),
-                            id: isValid
-                        })
-                        saveAccounts(accounts)
-                        getIgnoredLSAccounts().then(ignoredAcc => {
-                            removeItemFromArray(ignoredAcc, $('#name').val())
-                            saveIgnoredLSAccounts(ignoredAcc)
-                        })
-                        populateAccounts()
-                    } else {
-                        $('#invalid-id').show()
-                    }
-                })
+                const type = $('#type').val()
+                console.log(type)
+                if (type === 'student') {
+                    validateId($('#id').val()).then((isValid) => {
+                        if (isValid) {
+                            accounts.push({
+                                name: $('#name').val(),
+                                id: isValid,
+                                type: 'student'
+                            })
+                            saveAccounts(accounts)
+                            getIgnoredLSAccounts().then(ignoredAcc => {
+                                removeItemFromArray(ignoredAcc, $('#name').val())
+                                saveIgnoredLSAccounts(ignoredAcc)
+                            })
+                            populateAccounts()
+                        } else {
+                            $('#invalid-id').show()
+                        }
+                    })
+                } else {
+                    validateTeacherId($('#id').val()).then(isValid => {
+                        console.log('')
+                        if (isValid) {
+                            accounts.push({
+                                name: $('#name').val(),
+                                id: isValid,
+                                type: 'teacher'
+                            })
+                            saveAccounts(accounts)
+                            getIgnoredLSAccounts().then(ignoredAcc => {
+                                removeItemFromArray(ignoredAcc, $('#name').val())
+                                saveIgnoredLSAccounts(ignoredAcc)
+                            })
+                            window.location.replace('classes.html?id=' + isValid + '&name=' + $('#name').val())
+                        } else {
+                            $('#invalid-id').show()
+                        }
+                    })
+                }
             }
             break
         }
@@ -78,10 +106,10 @@ $('#save').click(() => {
 
         case 'user': {
             validateId($('#id').val()).then(isValid => {
-                if(isValid){
+                if (isValid) {
                     const sel = $('#options').val()
                     accounts.forEach(element => {
-                        if(element.name === sel){
+                        if (element.name === sel) {
                             element.id = isValid
                         }
                     })
@@ -102,11 +130,15 @@ function populateAccounts() {
             for (i = 0; i < acc.length; i++) {
                 $('#users').append('<option value="' + acc[i].name + '" class="user">' + acc[i].name + '</option>')
                 $('#delete-select').append('<option value="' + acc[i].name + '" class="user">' + acc[i].name + '</option>')
+                $('#options option[selected]').removeAttr('selected')
+                $('#add').attr('selected', 'true')
             }
-
+            
             accounts = acc
         } else {
             accounts = []
         }
     })
+
+   
 }

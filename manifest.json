@@ -9,7 +9,8 @@
     "content_scripts": [
         {
             "matches": [
-                "<all_urls>"
+                "https://www.lernsax.de/*",
+                "https://planungstool-fsg.de/*"
             ],
             "js": [
                 "./scripts/misc/jquery.js",
