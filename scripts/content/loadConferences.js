@@ -2,10 +2,10 @@ function loadConferences(id) {
     return new Promise((resolve, reject) => {
         fetch('https://www.planungstool-fsg.de?id=' + id).then(r => r.text()).then(t => {
             const dom = $(t)
-            $('.itemkonferenz', dom).each((i, e) => {
+            $('.itemkonferenz', dom).each((i, e) =>{
                 $(e).addClass('item')
             })
-            $('.itemarbeit', dom).each((i, e) => {
+            $('.itemarbeit', dom).each((i, e) =>{
                 $(e).addClass('item')
             })
 
@@ -28,14 +28,12 @@ function loadConferences(id) {
                             inprogress: $('.inprogress', $element2).length == 1
 
                         }
-                        conference.href = data
 
                         const hinweis = $('#hinweis', $element2)
                         if (hinweis.children().length == 1) {
                             if (hinweis.contents().first().prop('tagName') === 'A') {
                                 if (hinweis.contents().first().attr('href').includes('bbb.schullogin.de')) {
                                     conference.href = hinweis.contents().first().attr('href')
-
                                     conference.location = 'Auf Schullogin.de'
                                 } else {
                                     conference.href = hinweis.contents().first().attr('href')
@@ -105,25 +103,24 @@ function validateId(input) {
     })
 }
 
-
-function getAccounts() {
-    return new Promise((resolve, reject) => {
-        browser.storage.sync.get(['accounts']).then((data) => {
-            if (data.accounts) {
-                resolve(data.accounts)
-            } else {
-                resolve([])
-            }
-        })
-    })
-}
-
 function validateTeacherId(input) {
     return new Promise((resolve, reject) => {
         fetch('https://planungstool-fsg.de/klassen_id.php?lehrer_id=' + input).then(r => r.text()).then(t => {
             resolve((t.includes('nomatch') ? false : input))
         }).catch(err => {
             resolve(false)
+        })
+    })
+}
+
+function getAccounts() {
+    return new Promise((resolve, reject) => {
+        chrome.storage.sync.get(['accounts'], (data) => {
+            if (data.accounts) {
+                resolve(data.accounts)
+            } else {
+                resolve([])
+            }
         })
     })
 }
