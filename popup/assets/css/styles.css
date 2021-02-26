@@ -1,27 +1,15 @@
-.list-unstyled li a {
-  text-transform: none;
-}
-
 body::-webkit-scrollbar {
-  width: 6px;
+    width: 5px;
 }
 
 body::-webkit-scrollbar-track {
-  display: none;
+    display: none;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: grey;
-  border-radius: 2px;
-  width: 4px;
-}
-
-body {
-  width: 400px;
-  height: 600px;
+    background-color: gray;
 }
 
 input {
-  width: 300px;
+    color: white;
 }
-

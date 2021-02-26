@@ -1,0 +1,20 @@
+name: Addon Packager
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: extension
+          path: |
+            ./icon/*
+            ./popup/*
+            ./scripts/*
+            ./manifest.json
