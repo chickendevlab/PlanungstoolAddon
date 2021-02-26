@@ -1,0 +1,12 @@
+{
+    "addons": {
+      "addon@planungstool-fsg.de": {
+        "updates": [
+          {
+            "version": "1.0.0",
+            "update_link": "https://chickendevlab.github.io/PlanungstoolAddon/dist/firefox/1.0.0/1.0.0.xpi"
+          }
+        ]
+      }
+    }
+  }
