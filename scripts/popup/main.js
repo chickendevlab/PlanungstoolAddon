@@ -62,10 +62,6 @@ $('#save').click(() => {
                                 type: 'student'
                             })
                             saveAccounts(accounts)
-                            getIgnoredLSAccounts().then(ignoredAcc => {
-                                removeItemFromArray(ignoredAcc, $('#name').val())
-                                saveIgnoredLSAccounts(ignoredAcc)
-                            })
                             populateAccounts()
                         } else {
                             $('#invalid-id').show()
@@ -81,10 +77,6 @@ $('#save').click(() => {
                                 type: 'teacher'
                             })
                             saveAccounts(accounts)
-                            getIgnoredLSAccounts().then(ignoredAcc => {
-                                removeItemFromArray(ignoredAcc, $('#name').val())
-                                saveIgnoredLSAccounts(ignoredAcc)
-                            })
                             window.location.replace('classes.html?id=' + isValid + '&name=' + $('#name').val())
                         } else {
                             $('#invalid-id').show()

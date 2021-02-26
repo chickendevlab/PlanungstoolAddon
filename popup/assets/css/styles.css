@@ -1,0 +1,15 @@
+body::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    display: none;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: gray;
+}
+
+input {
+    color: white;
+}
