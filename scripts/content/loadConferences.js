@@ -28,21 +28,14 @@ function loadConferences(id) {
                             inprogress: $('.inprogress', $element2).length == 1
 
                         }
+                        conference.href = data
 
-<<<<<<< HEAD
-                        hinweis.contents().each((index, e) => {
-                            $e = $(e)
-                            if ($e.prop('tagName') === 'A') {
-                                const data = $e.attr('href')
-                                if (data.includes('bbb.schullogin.de')) {
-                                    conference.href = data
-=======
                         const hinweis = $('#hinweis', $element2)
                         if (hinweis.children().length == 1) {
                             if (hinweis.contents().first().prop('tagName') === 'A') {
                                 if (hinweis.contents().first().attr('href').includes('bbb.schullogin.de')) {
                                     conference.href = hinweis.contents().first().attr('href')
->>>>>>> 97c1f140a0a16cf197f782611a23884595df87b5
+
                                     conference.location = 'Auf Schullogin.de'
                                 } else {
                                     conference.href = hinweis.contents().first().attr('href')
