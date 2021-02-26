@@ -1,3 +1,10 @@
+.login-dark {
+  /*height: 1000px;*/
+  background: #475d62 url(star-sky.jpg);
+  background-size: cover;
+  position: relative;
+}
+
 .login-dark form {
   max-width: 320px;
   width: 90%;
@@ -63,25 +70,13 @@
   transform: translateY(1px);
 }
 
+.login-dark {
+  height: 600px;
+  width: 400px;
+}
+
 a:hover {
   outline: none;
   text-shadow: 0px 0px 20px #fff;
-}
-
-.list-unstyled li a:hover {
-  text-decoration: none;
-}
-
-.smaler {
-  width: 255px;
-  background: inherit;
-}
-
-#name:focus {
-  border: none;
-}
-
-a:hover {
-  text-decoration: none;
 }
 

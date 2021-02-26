@@ -1,0 +1,18 @@
+a:hover {
+  outline: none;
+  text-shadow: 0px 0px 20px #fff;
+}
+
+.list-unstyled li a:hover {
+  text-decoration: none;
+}
+
+.list-unstyled li a {
+  text-transform: none;
+}
+
+.form-control, .form-control:focus {
+  background: none;
+  border-color: inherit;
+}
+
