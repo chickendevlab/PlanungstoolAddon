@@ -14,7 +14,7 @@ function loadConferences(id) {
                 const $element1 = $(element1)
                 if ($('.item', $element1).length != 0) {
                     days[index1] = {
-                        date: index1 == 0 ? 'Heute' : $('h3', $element1).text().substr($('h3', $element1).text().length - 10),
+                        date: $('h3', $element1).length == 0 ? 'Heute' : $('h3', $element1).text().substr($('h3', $element1).text().length - 10),
                         conferences: []
                     }
 
