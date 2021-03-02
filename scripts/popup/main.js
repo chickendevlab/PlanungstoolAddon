@@ -63,6 +63,7 @@ $('#save').click(() => {
                             })
                             saveAccounts(accounts)
                             populateAccounts()
+                            showMessage('Der neue Account wurde erfolgreich angelegt.')
                         } else {
                             $('#invalid-id').show()
                         }
@@ -93,6 +94,7 @@ $('#save').click(() => {
             })
             saveAccounts(accounts)
             populateAccounts()
+            showMessage('Der Account ' + id + ' wurde erfolgreich gelöscht!')
             break
         }
 
@@ -105,6 +107,8 @@ $('#save').click(() => {
                             element.id = isValid
                         }
                     })
+                    saveAccounts(accounts)
+                    showMessage('Die ID des Accounts ' + sel + ' wurde erfolgreich zu "' + isValid + '" geändert.')
                 } else {
                     $('#invalid-id').show()
                 }
@@ -133,4 +137,17 @@ function populateAccounts() {
     })
 
    
+}
+
+$('#close-msg').click(() => {
+    $('#message').hide()
+    $('#content').fadeIn(1000) 
+    $('body').height('100%')
+})
+
+function showMessage(msg){
+    $('#overlay-content').text(msg)
+    $('body').height($('#content').height())
+    $('#message').fadeIn(1000)
+    $('#content').hide()
 }
