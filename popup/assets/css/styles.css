@@ -13,3 +13,10 @@ body::-webkit-scrollbar-thumb {
 input {
     color: white;
 }
+
+#overlay-content {
+    display: block;
+    color: white;
+    font-size: 1.2em;
+    padding-bottom: 1em;
+}

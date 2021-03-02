@@ -15,7 +15,7 @@
 
 <body
     style="width: 100%;height: 100%;background: linear-gradient(135deg, rgb(0,68,170) 0%, #1e90ff 76%), rgb(66,148,167);width: 100%;height: 100%;">
-    <div
+    <div id="content"
         style="height: auto;width: 400px;margin: 37px;color: rgb(33, 37, 41);background: #1e2833;border-radius: 4px;padding: 40px;color: #fff;box-shadow: 3px 3px 4px rgba(0,0,0,0.2);">
         <form method="post">
             <div style="text-align: center;"><img class="img-fluid" src="assets/img/logo.png" style="height: 83px;">
@@ -36,17 +36,21 @@
                     </optgroup>
                 </select><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Wähle hier, was du
                     machen willst.</label></div>
-            <div class="form-group" id="delete-input" style="display: none;"><select class="form-control" id="delete-select">
+            <div class="form-group" id="delete-input" style="display: none;"><select class="form-control"
+                    id="delete-select">
                     <option value="bistry.elias16" id="users">bistry.elias16</option>
                 </select><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Wähle den Account aus,
                     den du löschen möchtest.</label></div>
-            <div class="form-group" id="name-input"><input class="form-control" type="text"
-                    placeholder="Lernsax-Name" id="name">
+            <div class="form-group" id="name-input"><input class="form-control" type="text" placeholder="Lernsax-Name"
+                    id="name">
                 <div style="text-align: right; display: none;" id="invalid-name"><label
-                        style="color: var(--danger);font-size: 10px;">* Der angegebene Name ist bereits in Verwendung!</label></div><label
-                    style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Deinen Lernsax-Name entspricht deiner LernSax-Email.</label>
+                        style="color: var(--danger);font-size: 10px;">* Der angegebene Name ist bereits in
+                        Verwendung!</label></div><label
+                    style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Deinen Lernsax-Name entspricht
+                    deiner LernSax-Email.</label>
             </div>
-            <div class="form-group" id="id-input"><input class="form-control" type="text" placeholder="Klassen-ID oder URL" id="id">
+            <div class="form-group" id="id-input"><input class="form-control" type="text"
+                    placeholder="Klassen-ID oder URL" id="id">
                 <div style="text-align: right; display: none;" id="invalid-id"><label
                         style="color: var(--danger);font-size: 10px;">* Die angegebene ID bzw. URL ist
                         ungültig</label></div><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Du
@@ -58,13 +62,19 @@
                     <option value="teacher" disabled>Lehrer</option>
                 </select><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Wähle hier aus, ob du
                     ein Schüler, oder ein Lehrer bist. Falls du ein Lehrer sein sollten, müssen sie bei Klassen-ID Ihre
-                    Lehrerkennung eingeben.<br><span style="color: firebrick;">Die Funktionen für Lehrer werden erst im nächsten Update eingefügt.</span></label></div>
+                    Lehrerkennung eingeben.<br><span style="color: firebrick;">Die Funktionen für Lehrer werden erst im
+                        nächsten Update eingefügt.</span></label></div>
             <div class="form-group"><button class="btn btn-primary btn-block" id="save" type="button"
                     style="background: #1e90ff;">Speichern</button></div>
             <div class="text-center"><a class="text-light" href="index.html"
                     style="/*text-shadow: 0px 0px 20px #fff;*//*font-size: 15px;*/color: rgb(249,249,249);text-decoration: none;"><i
                         class="fa fa-arrow-circle-left" style="margin-right: 10px;"></i>Zurück</a></div>
         </form>
+    </div>
+    <div id="message"
+        style="display: none;text-align: center; height: auto;width: 400px;margin: 100px 37px;color: rgb(33, 37, 41);background: #1e2833;border-radius: 4px;padding: 40px;color: #fff;box-shadow: 3px 3px 4px rgba(0,0,0,0.2);">
+        <span id="overlay-content">Hi</span>
+        <button class="btn btn-primary btn-block" id="close-msg">Okay</button>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
