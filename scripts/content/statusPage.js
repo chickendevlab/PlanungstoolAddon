@@ -1,12 +1,3 @@
-function removeItemFromArray(arr, value) {
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] === value) {
-            arr.splice(i, 1)
-        }
-    }
-    return arr
-}
-
 if (window.location.href.startsWith('https://www.lernsax.de/wws/100001.php')) {
     const uName = $('body').attr('data-login')
     getAccounts().then(accounts => {
@@ -36,55 +27,49 @@ if (window.location.href.startsWith('https://www.lernsax.de/wws/100001.php')) {
         }
     })
 }
-// Lehrer-Features -> nächstes Update
-/* else {
+else if (window.location.href.startsWith('https://www.lernsax.de/wws/100013.php')) {
     const title = $('h1#heading').text().split(' ')
-    removeItemFromArray(title, '-').pop()
-    if (title.includes('Fachlehrerteam')) {
-        removeItemFromArray(title, 'Fachlehrerteam')
-        if (title.length == 1 || (title.length == 2 && title[1] === 'dt') || (title.length == 2 && title[1] === 'ts')) {
-            if (title.length == 2) {
-                switch (title[1]) {
-                    case 'dt':
-                        title[0] = title[0] + 'd'
-                        break
-                    case 'ts':
-                        title[0] = title[0] + 's'
-                        break
+    const uName = $('body').attr('data-login')
+    getAccounts((accounts) => {
+        let classes
+        accounts.forEach(acc => {
+            if (acc.name === uName) {
+                if (acc.type === 'teacher') {
+                    classes = acc.classes
                 }
-
-                title.pop()
             }
-            const uName = $('body').attr('data-login')
-            getAccounts().then(accounts => {
-                let id
-                let classes
-                accounts.forEach(acc => {
-                    if (acc.name === uName && acc.type === 'teacher') {
-                        id = acc.id
-                        classes = acc.classes
-                    }
-                })
-
-                if (classes.length) {
-                    let id
-                    classes.forEach(clazz => {
-                        if (clazz.name === title[0]) {
-                            id = clazz.id
+        })
+        if (classes) {
+            if (title[title.length - 1] === 'Übersicht') {
+                title.pop()
+                removeItemFromArray(title, '-')
+                if (title[title.length - 1] === 'Fachlehrerteam') {
+                    title.pop()
+                    let clazz = title[0]
+                    if (title.length == 2) {
+                        if (title[0] === '10/3') {
+                            clazz = clazz + 'd+t'
+                        } else {
+                            clazz = clazz + (title[1] === 'dt' ? 'd' : 't')
                         }
-                    })
+                    }
+                    if (classes[clazz]) { populateConferences(classes[clazzz]) } else {
+                        $('.table_lr.space tbody').append($('<tr><td class="title"><span id="title-field" style="cursor:pointer">Konferenzen</span>'
+                            + '</td><td class="data" id="conference-control">'
+                            + '<div id="conferenz-addon" class="links"><ul>'
+                            + '<li>Für dieses Fachlehrerteam ist keine Klasse zugeordnet! Dies kann entweder daran liegen, dass <ul><li>Sie für diese Klasse keine Klassen-ID gespeichert haben '
+                            + '<br>Öfffnen Sie das Popup-Fenster des Addons, unter Accounts können Sie dem entsprechenden Account Klassen-IDs zuweisen,</li>'
+                            + '<li>dass diese Klasse eine BiNa-Klasse ist<br>Bei BiNa-Klassen werden die Konferenzen nur bei dem Deutschen bzw. Tschechischen Teams angezeigt.</li>'
+                            + '<li>oder dass dieses Team keiner Planungstool-ID zugeordnet werden konnte. Dies kann daran liegen, dass für dieses Team keine Klasse bei planungstool-fsg.de existiert.</ul></li></ul>'
+                            + '</div></td></tr>'))
 
-                    if (id) {
-                        populateConferences(id)
                     }
                 }
-            })
+            }
         }
-    } else {
-        const titleStr = title.join(' ')
-    }
+    })
 }
-*/
+
 
 
 function populateConferences(id) {
@@ -99,7 +84,7 @@ function populateConferences(id) {
 
         $('#conference-control').append('<div id="conferenz-addon" class="links"></div>')
         const inField = $('#conferenz-addon')
-        if(conf.length == 0 ){
+        if (conf.length == 0) {
             inField.append($('<li>Alles ruhig... Für dich sind keine Termine vorhanden!</li>'))
         }
         conf.forEach(date => {
@@ -110,7 +95,7 @@ function populateConferences(id) {
                     const conference = $('<details class="conferenz" style="outline: none;"></details>')
                     conference.append('<summary style="outline: none;"><b>' + conferencData.type + ': '
                         + (conferencData.type === 'SONSTIGES' ? '' : conferencData.fach) + '</b> ' + conferencData.zeit + ' '
-                        +( conferencData.inprogress ? '<span style="color: white; font-size: 13px; background-color: #FF5500; padding: 1px 2px; margin:5px 0px 5px 1px;"> JETZT </span>' : ' </summary>'))
+                        + (conferencData.inprogress ? '<span style="color: white; font-size: 13px; background-color: #FF5500; padding: 1px 2px; margin:5px 0px 5px 1px;"> JETZT </span>' : ' </summary>'))
                     const conferenceContent = $('<div style="padding-left: 2em; margin-bottom: 10px;"></div>')
                     if (conferencData.type === 'SONSTIGES') { conferenceContent.append('<span>' + conferencData.fach + '</span><br>') }
                     if (conferencData.href) {

@@ -2,10 +2,10 @@ function loadConferences(id) {
     return new Promise((resolve, reject) => {
         fetch('https://www.planungstool-fsg.de?id=' + id).then(r => r.text()).then(t => {
             const dom = $(t)
-            $('.itemkonferenz', dom).each((i, e) =>{
+            $('.itemkonferenz', dom).each((i, e) => {
                 $(e).addClass('item')
             })
-            $('.itemarbeit', dom).each((i, e) =>{
+            $('.itemarbeit', dom).each((i, e) => {
                 $(e).addClass('item')
             })
 
@@ -126,11 +126,59 @@ function getAccounts() {
 }
 
 function saveAccounts(accounts) {
+    console.log(accounts)
     return new Promise((resolve, reject) => {
+        console.log({
+            accounts: accounts
+        })
         chrome.storage.sync.set({
             accounts: accounts
         }, (data) => {
             resolve(true)
+        })
+    })
+}
+
+function getClasses(userID) {
+    return new Promise((resolve, reject) => {
+        chrome.storage.sync.get(['classes'], (data) => {
+            if (data.classes) {
+                try {
+                    const dat = JSON.parse(data.classes)
+                    if (dat[userID]) {
+                        resolve(dat[userID])
+                    } else resolve({})
+                } catch (error) {
+                    resolve({})
+                }
+            } else {
+                resolve({})
+            }
+        })
+    })
+}
+
+function saveClasses(userID, classes) {
+    console.log(classes, JSON.stringify(classes))
+    return new Promise((resolve, reject) => {
+        chrome.storage.sync.get(['classes'], (data) => {
+            if (data.classes) {
+                let oldClasses = JSON.parse(JSON.stringify(data.classes))
+                oldClasses[userID] = classes
+                chrome.storage.sync.set({
+                    classes: JSON.stringify(oldClasses)
+                }, (data) => {
+                    resolve(true)
+                })
+            } else {
+                let newClass = {}
+                newClass[userID] = classes
+                chrome.storage.sync.set({
+                    classes: JSON.stringify(newClass)
+                }, (data) => {
+                    resolve(true)
+                })
+            }
         })
     })
 }
