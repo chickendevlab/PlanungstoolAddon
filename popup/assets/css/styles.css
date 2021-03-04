@@ -20,3 +20,9 @@ input {
     font-size: 1.2em;
     padding-bottom: 1em;
 }
+
+#class-select {
+    background-color: none;
+    border-color: #1e90ff;
+    margin-bottom: 5px;
+}

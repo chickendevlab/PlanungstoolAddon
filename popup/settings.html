@@ -36,6 +36,10 @@
                     </optgroup>
                 </select><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Wähle hier, was du
                     machen willst.</label></div>
+            <div class="form-group" id="account-type" style="text-align: center;display: none;">
+                <b style="font-size: 0.95em;">Account-Typ:</b><br>
+                <span id="account" style="font-size: 0.9em;">Schüler</span>
+            </div>
             <div class="form-group" id="delete-input" style="display: none;"><select class="form-control"
                     id="delete-select">
                     <option value="bistry.elias16" id="users">bistry.elias16</option>
@@ -59,11 +63,13 @@
             </div>
             <div class="form-group" id="input-type"><select class="form-control" id="type">
                     <option value="student" selected="">Schüler</option>
-                    <option value="teacher" disabled>Lehrer</option>
+                    <option value="teacher">Lehrer</option>
                 </select><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Wähle hier aus, ob du
                     ein Schüler, oder ein Lehrer bist. Falls du ein Lehrer sein sollten, müssen sie bei Klassen-ID Ihre
-                    Lehrerkennung eingeben.<br><span style="color: firebrick;">Die Funktionen für Lehrer werden erst im
-                        nächsten Update eingefügt.</span></label></div>
+                    Lehrerkennung eingeben.</label></div>
+            <a id="class-select" class="text-light btn btn-block" href=""
+                style="display: none;color: rgb(249,249,249);text-decoration: none;">Klassen
+                auswählen</a>
             <div class="form-group"><button class="btn btn-primary btn-block" id="save" type="button"
                     style="background: #1e90ff;">Speichern</button></div>
             <div class="text-center"><a class="text-light" href="index.html"
@@ -75,6 +81,10 @@
         style="display: none;text-align: center; height: auto;width: 400px;margin: 100px 37px;color: rgb(33, 37, 41);background: #1e2833;border-radius: 4px;padding: 40px;color: #fff;box-shadow: 3px 3px 4px rgba(0,0,0,0.2);">
         <span id="overlay-content">Hi</span>
         <button class="btn btn-primary btn-block" id="close-msg">Okay</button>
+        <div id="confirm">
+            <button class="btn btn-primary btn-block" id="no">Nein</button>
+            <button class="btn btn-primary btn-block" id="yes">Ja</button>
+        </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
