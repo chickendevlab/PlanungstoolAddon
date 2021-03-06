@@ -1,5 +1,14 @@
+// Startseite für Schüler
 if (window.location.href.startsWith('https://www.lernsax.de/wws/100001.php')) {
-    const uName = $('body').attr('data-login')
+    // Wird den Accountnamen (Klassennahmen)
+    let uName
+
+    $('.top_option').each((i, e) => {
+        const val = $(e).text().split(' ')
+        if(val[1] === 'Klassenzimmer'){
+            uName = val[0]
+        }
+    })
     getAccounts().then(accounts => {
         let id
         let teacher = false
@@ -28,7 +37,6 @@ if (window.location.href.startsWith('https://www.lernsax.de/wws/100001.php')) {
     })
 }
 else if (window.location.href.startsWith('https://www.lernsax.de/wws/100009.php')) {
-    console.log('hiho')
     const title = $('h1#heading').text().split(' ')
     const uName = $('body').attr('data-login')
     getAccounts().then(accounts => {
@@ -42,11 +50,9 @@ else if (window.location.href.startsWith('https://www.lernsax.de/wws/100009.php'
         getClasses().then(classes => {
 
             if (title[title.length - 1] === 'Übersicht') {
-                console.log('l1')
                 title.pop()
                 title.pop()
                 if (title[title.length - 1] === 'Fachlehrerteam') {
-                    console.log('l2')
                     title.pop()
                     let clazz = title[0]
                     if (title.length == 2) {
@@ -56,8 +62,6 @@ else if (window.location.href.startsWith('https://www.lernsax.de/wws/100009.php'
                             clazz = clazz + (title[1] === 'dt' ? 'd' : 't')
                         }
                     }
-                    console.log(clazz)
-                    console.log(classes)
                     if (classes[clazz]) { populateConferences(classes[clazz]) } else {
                         $('.table_lr.space tbody').append($('<tr><td class="title"><span id="title-field" style="cursor:pointer">Konferenzen</span>'
                             + '</td><td class="data" id="conference-control">'

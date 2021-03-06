@@ -96,7 +96,17 @@ function validateId(input) {
             return
         }
         fetch('https://www.planungstool-fsg.de?id=' + out).then(r => r.text()).then(t => {
-            resolve((t.includes('nomatch') ? false : out))
+            if (t.includes('nomatch')) {
+                resolve({
+                    valid: false
+                })
+            } else {
+                resolve({
+                    id: out,
+                    valid: true,
+                    name: $('.klasse', $(t)).text()
+                })
+            }
         }).catch(err => {
             resolve(false)
         })
@@ -146,7 +156,7 @@ function loadClassesWithTeacherId(id) {
             let ret = {}
             $('.id', dom).each((index, element) => {
                 ret[$(element).text()] = $(element).attr('data-id')
-                
+
             })
             chrome.storage.sync.set({
                 classes: ret
@@ -170,7 +180,7 @@ function getClasses() {
     })
 }
 
-function deleteClasses(){
+function deleteClasses() {
     return new Promise((resolve, reject) => {
         chrome.storage.sync.set({
             classes: {}

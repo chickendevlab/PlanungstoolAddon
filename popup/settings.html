@@ -36,21 +36,26 @@
                     </optgroup>
                 </select><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Wähle hier, was du
                     machen willst.</label></div>
+            <div class="form-group" id="input-type"><select class="form-control" id="type">
+                    <option value="student" selected="">Schüler</option>
+                    <option value="teacher">Lehrer</option>
+                </select><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Wähle hier aus, ob du
+                    ein Schüler, oder ein Lehrer bist. Falls Sie ein Lehrer sein sollten, müssen Sie bei Klassen-ID Ihre
+                    Lehrerkennung eingeben.</label></div>
             <div class="form-group" id="account-type" style="text-align: center;display: none;">
                 <b style="font-size: 0.95em;">Account-Typ:</b><br>
                 <span id="account" style="font-size: 0.9em;">Schüler</span>
             </div>
             <div class="form-group" id="delete-input" style="display: none;"><select class="form-control"
                     id="delete-select">
-                    <option value="bistry.elias16" id="users">bistry.elias16</option>
                 </select><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Wähle den Account aus,
                     den du löschen möchtest.</label></div>
-            <div class="form-group" id="name-input"><input class="form-control" type="text" placeholder="Lernsax-Name"
+            <div class="form-group" id="name-input" style="display: none;"><input class="form-control" type="text" placeholder="Lernsax-Name"
                     id="name">
                 <div style="text-align: right; display: none;" id="invalid-name"><label
                         style="color: var(--danger);font-size: 10px;">* Der angegebene Name ist bereits in
                         Verwendung!</label></div><label
-                    style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Deinen Lernsax-Name entspricht
+                    style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Ihr Lernsax-Name entspricht
                     deiner LernSax-Email.</label>
             </div>
             <div class="form-group" id="id-input"><input class="form-control" type="text"
@@ -61,12 +66,6 @@
                     bekommst von deinem Klassenlehrer einen Link in der Form https://planungstool-fsg.de/id/XXXX. Du
                     kannst entweder XXXX oder den gesamten Link eingeben.</label>
             </div>
-            <div class="form-group" id="input-type"><select class="form-control" id="type">
-                    <option value="student" selected="">Schüler</option>
-                    <option value="teacher">Lehrer</option>
-                </select><label style="margin-top: 6px;font-size: 10px;color: rgb(174,174,174);">Wähle hier aus, ob du
-                    ein Schüler, oder ein Lehrer bist. Falls du ein Lehrer sein sollten, müssen sie bei Klassen-ID Ihre
-                    Lehrerkennung eingeben.</label></div>
             <button id="class-select" class="text-light btn btn-block"
                 style="display: none;color: rgb(249,249,249);text-decoration: none;">Klassen-IDs erneut laden</button>
             <div class="form-group"><button class="btn btn-primary btn-block" id="save" type="button"
