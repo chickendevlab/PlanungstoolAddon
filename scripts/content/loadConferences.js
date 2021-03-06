@@ -139,18 +139,30 @@ function saveAccounts(accounts) {
     })
 }
 
-function getClasses(userID) {
+function loadClassesWithTeacherId(id) {
+    return new Promise((resolve, reject) => {
+        fetch('https://planungstool-fsg.de/klassen_id.php?lehrer_id=' + id).then(r => r.text()).then(t => {
+            const dom = $('<html><body>' + t + '</body></html>')
+            let ret = {}
+            $('.id', dom).each((index, element) => {
+                ret[$(element).text()] = $(element).attr('data-id')
+                
+            })
+            chrome.storage.sync.set({
+                classes: ret
+            })
+            resolve(ret)
+        }).catch(err => {
+            resolve({})
+        })
+    })
+}
+
+function getClasses() {
     return new Promise((resolve, reject) => {
         chrome.storage.sync.get(['classes'], (data) => {
             if (data.classes) {
-                try {
-                    const dat = JSON.parse(data.classes)
-                    if (dat[userID]) {
-                        resolve(dat[userID])
-                    } else resolve({})
-                } catch (error) {
-                    resolve({})
-                }
+                resolve(data.classes)
             } else {
                 resolve({})
             }
@@ -158,46 +170,10 @@ function getClasses(userID) {
     })
 }
 
-function saveClasses(userID, classes) {
-    console.log(classes, JSON.stringify(classes))
+function deleteClasses(){
     return new Promise((resolve, reject) => {
-        chrome.storage.sync.get(['classes'], (data) => {
-            if (data.classes) {
-                let oldClasses = JSON.parse(JSON.stringify(data.classes))
-                oldClasses[userID] = classes
-                chrome.storage.sync.set({
-                    classes: JSON.stringify(oldClasses)
-                }, (data) => {
-                    resolve(true)
-                })
-            } else {
-                let newClass = {}
-                newClass[userID] = classes
-                chrome.storage.sync.set({
-                    classes: JSON.stringify(newClass)
-                }, (data) => {
-                    resolve(true)
-                })
-            }
-        })
-    })
-}
-
-function loadClassesByTeacherId(id) {
-    return new Promise((resolve, reject) => {
-        fetch('https://planungstool-fsg.de/klassen_id.php?lehrer_id=' + id).then(r => r.text()).then(t => {
-            const dom = $('<html><body>' + t + '</body></html>')
-            let ret = []
-            $('span', dom).each((index, element) => {
-                ret.push({
-                    id: $(element).attr('data-id'),
-                    name: $(element).text()
-                })
-            })
-
-            resolve(ret)
-        }).catch(err => {
-            reject(err)
+        chrome.storage.sync.set({
+            classes: {}
         })
     })
 }
