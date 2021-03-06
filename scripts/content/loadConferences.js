@@ -103,7 +103,7 @@ function validateId(input) {
             } else {
                 resolve({
                     id: out,
-                    valid: false,
+                    valid: true,
                     name: $('.klasse', $(t)).text()
                 })
             }

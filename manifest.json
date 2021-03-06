@@ -1,6 +1,6 @@
 {
     "name": "Planungstool-Addon",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "manifest_version": 2,
     "description": "Dieses Addon bindet die wichtigsten Funktionen von https://www.planungstool-fsg.de/ direkt in LernSax ein!",
     "icons": {
@@ -28,12 +28,5 @@
     ],
     "browser_action": {
         "default_popup": "./popup/index.html"
-    },
-    "browser_specific_settings": {
-        "gecko": {
-          "id": "addon@planungstool-fsg.de",
-          "update_url": "https://chickendevlab.github.io/PlanungstoolAddon/dist/firefox/versions.json"
-        }
-      }
-      
+    }
 }
