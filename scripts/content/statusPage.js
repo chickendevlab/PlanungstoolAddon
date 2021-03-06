@@ -27,23 +27,26 @@ if (window.location.href.startsWith('https://www.lernsax.de/wws/100001.php')) {
         }
     })
 }
-else if (window.location.href.startsWith('https://www.lernsax.de/wws/100013.php')) {
+else if (window.location.href.startsWith('https://www.lernsax.de/wws/100009.php')) {
+    console.log('hiho')
     const title = $('h1#heading').text().split(' ')
     const uName = $('body').attr('data-login')
-    getAccounts((accounts) => {
-        let classes
+    getAccounts().then(accounts => {
+        let id
         accounts.forEach(acc => {
             if (acc.name === uName) {
-                if (acc.type === 'teacher') {
-                    classes = acc.classes
-                }
+                id = acc.id
             }
         })
-        if (classes) {
+
+        getClasses().then(classes => {
+
             if (title[title.length - 1] === 'Übersicht') {
+                console.log('l1')
                 title.pop()
-                removeItemFromArray(title, '-')
+                title.pop()
                 if (title[title.length - 1] === 'Fachlehrerteam') {
+                    console.log('l2')
                     title.pop()
                     let clazz = title[0]
                     if (title.length == 2) {
@@ -53,21 +56,25 @@ else if (window.location.href.startsWith('https://www.lernsax.de/wws/100013.php'
                             clazz = clazz + (title[1] === 'dt' ? 'd' : 't')
                         }
                     }
-                    if (classes[clazz]) { populateConferences(classes[clazzz]) } else {
+                    console.log(clazz)
+                    console.log(classes)
+                    if (classes[clazz]) { populateConferences(classes[clazz]) } else {
                         $('.table_lr.space tbody').append($('<tr><td class="title"><span id="title-field" style="cursor:pointer">Konferenzen</span>'
                             + '</td><td class="data" id="conference-control">'
                             + '<div id="conferenz-addon" class="links"><ul>'
-                            + '<li>Für dieses Fachlehrerteam ist keine Klasse zugeordnet! Dies kann entweder daran liegen, dass <ul><li>Sie für diese Klasse keine Klassen-ID gespeichert haben '
-                            + '<br>Öfffnen Sie das Popup-Fenster des Addons, unter Accounts können Sie dem entsprechenden Account Klassen-IDs zuweisen,</li>'
+                            + '<li>Für dieses Fachlehrerteam ist keine Klasse zugeordnet! Dies kann entweder daran liegen, dass <ul><li>die lokalen Klassen-IDs nicht mehr ganz aktuell sind<br>'
+                            + 'Öfffnen Sie das Popup-Fenster des Addons, unter Accounts können Sie die Klassen-IDs aktualisieren</li>'
                             + '<li>dass diese Klasse eine BiNa-Klasse ist<br>Bei BiNa-Klassen werden die Konferenzen nur bei dem Deutschen bzw. Tschechischen Teams angezeigt.</li>'
                             + '<li>oder dass dieses Team keiner Planungstool-ID zugeordnet werden konnte. Dies kann daran liegen, dass für dieses Team keine Klasse bei planungstool-fsg.de existiert.</ul></li></ul>'
                             + '</div></td></tr>'))
 
                     }
                 }
+
             }
-        }
+        })
     })
+
 }
 
 

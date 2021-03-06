@@ -48,7 +48,12 @@ $('#options').change(() => {
                         if (acc.type === 'teacher') {
                             $('#account').text('Lehrer')
                             $('#class-select').show()
-                            $('#class-select').attr('href', 'classes.html?id=' + acc.id + '&name=' + acc.name)
+                            $('#class-select').click((e) => {
+                                e.preventDefault()
+                                loadClassesWithTeacherId(acc.id)
+                                showMessage('Die Klassen-IDs wurden aktualisiert!')
+                                $('#class-select').off('click')
+                            })
                         } else {
                             $('#account').text('Schüler')
                         }
@@ -79,7 +84,6 @@ $('#save').click(() => {
 
             if (b) {
                 const type = $('#type').val()
-                console.log(type)
                 if (type === 'student') {
                     validateId($('#id').val()).then((isValid) => {
                         if (isValid) {
@@ -97,16 +101,15 @@ $('#save').click(() => {
                     })
                 } else {
                     validateTeacherId($('#id').val()).then(isValid => {
-                        console.log('')
                         if (isValid) {
                             accounts.push({
                                 name: $('#name').val(),
                                 id: isValid,
-                                type: 'teacher',
-                                classes: []
+                                type: 'teacher'
                             })
+                            loadClassesWithTeacherId(isValid)
                             saveAccounts(accounts)
-                            window.location.replace('classes.html?newCreated=&id=' + isValid + '&name=' + $('#name').val())
+                            showMessage('Der neue Account wurde erfolgreich angelegt.')
                         } else {
                             $('#invalid-id').show()
                         }
@@ -121,7 +124,14 @@ $('#save').click(() => {
                 accounts = accounts.filter((element) => {
                     return element.name !== id
                 })
+                
                 saveAccounts(accounts)
+                accounts = accounts.filter((element) => {
+                    return element.type !== 'student'
+                })
+                if(accounts.length == 0){
+                    deleteClasses()
+                }
                 populateAccounts()
                 showMessage('Der Account ' + id + ' wurde erfolgreich gelöscht!')
             })
@@ -129,20 +139,42 @@ $('#save').click(() => {
         }
 
         case 'user': {
-            validateId($('#id').val()).then(isValid => {
-                if (isValid) {
-                    const sel = $('#options').val()
-                    accounts.forEach(element => {
-                        if (element.name === sel) {
-                            element.id = isValid
+            switch ($('#account').text()) {
+                case 'Schüler':
+                    validateId($('#id').val()).then(isValid => {
+                        if (isValid) {
+                            const sel = $('#options').val()
+                            accounts.forEach(element => {
+                                if (element.name === sel) {
+                                    element.id = isValid
+                                }
+                            })
+                            saveAccounts(accounts)
+                            showMessage('Die ID des Accounts ' + sel + ' wurde erfolgreich zu "' + isValid + '" geändert.')
+                        } else {
+                            $('#invalid-id').show()
                         }
                     })
-                    saveAccounts(accounts)
-                    showMessage('Die ID des Accounts ' + sel + ' wurde erfolgreich zu "' + isValid + '" geändert.')
-                } else {
-                    $('#invalid-id').show()
+                    break
+                case 'Lehrer': {
+                    validateTeacherId($('#id').val()).then(isValid => {
+                        if (isValid) {
+                            const sel = $('#options').val()
+                            accounts.forEach(element => {
+                                if (element.name === sel) {
+                                    element.id = isValid
+                                }
+                            })
+                            loadClassesWithTeacherId(isValid)
+                            saveAccounts(accounts)
+                            showMessage('Die ID des Accounts ' + sel + ' wurde erfolgreich zu "' + isValid + '" geändert.')
+                        } else {
+                            $('#invalid-id').show()
+                        }
+                    })
                 }
-            })
+            }
+
         }
 
     }
@@ -185,7 +217,7 @@ function showMessage(msg, buttonMsg = 'Okay') {
     $('#confirm').hide()
 }
 
-function askForConfirm(msg, yes = () => {}, no = () => {}) {
+function askForConfirm(msg, yes = () => { }, no = () => { }) {
     $('#overlay-content').text(msg)
     $('body').height($('#content').height())
     $('#message').fadeIn(1000)
