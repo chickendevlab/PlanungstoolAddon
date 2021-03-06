@@ -67,6 +67,10 @@ $('#options').change(() => {
                     // Zeige an, ob der Account ein Schüler oder ein Lehreraccount ist
                     if (acc.name === user) {
                         if (acc.type === 'teacher') {
+                            // Aktiviere ID-Input für Schüler
+                            $('#id').removeAttr('disabled')
+                            // Aktiviere Save-Button für Schüler
+                            $('#save').removeAttr('disabled')
                             $('#account').text('Lehrer')
                             $('#class-select').show()
                             $('#class-select').click((e) => {
@@ -76,6 +80,11 @@ $('#options').change(() => {
                                 $('#class-select').off('click')
                             })
                         } else {
+                            // Deaktiviere ID-Input für Schüler
+                            $('#id').attr('disabled', 'true')
+                            // Deaktiviere Save-Button für Schüler
+                            $('#save').attr('disabled', 'disabled')
+
                             $('#account').text('Schüler')
                         }
                         $('#id').val(acc.id)
@@ -110,6 +119,7 @@ $('#save').click(() => {
                 if (type === 'student') {
                     // Überprüfe Klassen-ID und lade Informationen
                     validateId($('#id').val()).then((data) => {
+                        console.log(data)
                         if (data.valid) {
                             // Entferne alle Accounts für die bestimmte Klasse
                             accounts = accounts.filter(el => {
@@ -225,8 +235,8 @@ function populateAccounts() {
 
             // Iteriere über Accounts
             for (i = 0; i < acc.length; i++) {
-                // Füge Lehreraccounts zu den Optionen hinzu
-                if (acc[i].type === 'teacher') { $('#users').append('<option value="' + acc[i].name + '" class="user">' + acc[i].name + '</option>') }
+                // Füge alle Accounts zu den Optionen hinzu
+                $('#users').append('<option value="' + acc[i].name + '" class="user">' + acc[i].name + '</option>')
 
                 // Füge alle Accounts zum Delete-DropDown hinzu
                 $('#delete-select').append('<option value="' + acc[i].name + '" class="user">' + acc[i].name + '</option>')
