@@ -51,6 +51,10 @@ $('#options').change(() => {
             $('#input-type').show()
             $('#class-select').hide()
             $('#account-type').hide()
+            // Aktiviere Save-Button
+            $('#save').removeAttr('disabled')
+            // Aktiviere Id-Input
+            $('#id').removeAttr('disabled')
             break
         case 'delete':
             $('#name-input').hide()
@@ -59,6 +63,8 @@ $('#options').change(() => {
             $('#input-type').hide()
             $('#class-select').hide()
             $('#account-type').hide()
+            // Aktiviere Save-Button
+            $('#save').removeAttr('disabled')
             break
         case 'user':
             getAccounts().then(accts => {
@@ -67,9 +73,9 @@ $('#options').change(() => {
                     // Zeige an, ob der Account ein Schüler oder ein Lehreraccount ist
                     if (acc.name === user) {
                         if (acc.type === 'teacher') {
-                            // Aktiviere ID-Input für Schüler
+                            // Aktiviere ID-Input für Lehrer
                             $('#id').removeAttr('disabled')
-                            // Aktiviere Save-Button für Schüler
+                            // Aktiviere Save-Button für Lehrer
                             $('#save').removeAttr('disabled')
                             $('#account').text('Lehrer')
                             $('#class-select').show()
