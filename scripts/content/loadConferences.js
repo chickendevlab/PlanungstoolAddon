@@ -101,10 +101,14 @@ function validateId(input) {
                     valid: false
                 })
             } else {
+                let plainName = $('.klasse', $(t)).text()
+                if(plainName.includes('t') || plainName.includes('d')){
+                    plainName.slice(0, -1)
+                }
                 resolve({
                     id: out,
                     valid: true,
-                    name: $('.klasse', $(t)).text()
+                    name: plainName
                 })
             }
         }).catch(err => {

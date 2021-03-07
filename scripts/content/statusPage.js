@@ -4,11 +4,13 @@ if (window.location.href.startsWith('https://www.lernsax.de/wws/100001.php')) {
     let uName
 
     $('.top_option').each((i, e) => {
-        const val = $(e).text().split(' ')
-        if(val[1] === 'Klassenzimmer'){
-            uName = val[0]
+        const txt = $(e).text()
+        if (txt.includes('Klassenzimmer')) {
+            uName = txt.split(' ')[0]
         }
+
     })
+
     getAccounts().then(accounts => {
         let id
         let teacher = false
