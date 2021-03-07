@@ -10,7 +10,6 @@ if (window.location.href.startsWith('https://www.lernsax.de/wws/100001.php')) {
         }
 
     })
-
     getAccounts().then(accounts => {
         let id
         let teacher = false

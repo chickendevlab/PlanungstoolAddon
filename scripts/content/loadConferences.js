@@ -62,7 +62,7 @@ function loadConferences(id) {
                 }
             })
             resolve(days)
-        }).catch(err => {
+        }).catch(err =>{
             reject(err)
         })
     })
