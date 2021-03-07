@@ -6,7 +6,7 @@ if (window.location.href.startsWith('https://www.lernsax.de/wws/100001.php')) {
     $('.top_option').each((i, e) => {
         const txt = $(e).text()
         if (txt.includes('Klassenzimmer')) {
-            uName = e.split(' ')[0]
+            uName = txt.split(' ')[0]
         }
 
     })
