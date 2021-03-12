@@ -1,217 +1,332 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Planungsyssystem für Konferenzen und Arbeiten</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="theme-color" content="#1e90ff" />
-<link href="https://fonts.googleapis.com/css?family=Montserrat|Abel|Roboto:Light|Lobster&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- saved from url=(0050)https://planungstool-fsg.de/addon/?klassen_id=emap -->
+<html>
 
-<style>
-  details summary {
-    outline: none;
-  }
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Planungsyssystem für Konferenzen und Arbeiten</title>
 
-  h1 {
-    color: DodgerBlue;
-    font-size: 30px;
-    font-family: Montserrat;
-    padding: 0;
-    text-transform: uppercase;
-    margin: 0px 0px 10px 0px;
-  }
+  <meta name="theme-color" content="#1e90ff">
+  <link href="./index_files/css" rel="stylesheet">
+  <link href="./index_files/aos.css" rel="stylesheet">
 
-  h2 {
-    color: DodgerBlue;
-    font-size: 18px;
-    font-family: Montserrat;
-    padding: 20px 0px;
-    text-transform: uppercase;
-    margin: 0px 0px 10px 0px;
-  }
+  <style>
+    details summary {
+      outline: none;
+    }
 
-  a {
-    color: MediumAquaMarine;
-    text-decoration: none;
-  }
+    h1 {
+      color: DodgerBlue;
+      font-size: 30px;
+      font-family: Montserrat;
+      padding: 0;
+      text-transform: uppercase;
+      margin: 0px 0px 10px 0px;
+    }
 
-  body {
-    padding: 5px;
-    font-family: Roboto, Arial;
-    font-size: 15px;
-    color: black;
-  }
+    h2 {
+      color: DodgerBlue;
+      font-size: 18px;
+      font-family: Montserrat;
+      padding: 20px 0px;
+      text-transform: uppercase;
+      margin: 0px 0px 10px 0px;
+    }
 
-  .knopf {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-transform: uppercase;
-    color: white;
-    padding: 8px;
-    margin: 15px 0px 0px 0px;
-    font-size: 17px;
-    transition: all 0.2s;
-    outline: none;
-    font-family: Abel, Arial;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-    border-radius: 50px;
-    border: 1.5px solid DodgerBlue;
-    background-color: DodgerBlue;
-  }
+    a {
+      color: DodgerBlue;
+      text-decoration: none;
+    }
 
-  .knopf:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
-    transition: all 0.2s;
-  }
+    body {
+      padding: 5px;
+      font-family: Roboto, Arial;
+      font-size: 15px;
+      color: black;
+      background: rgb(16, 11, 85);
+      background: -moz-linear-gradient(0deg, rgba(16, 11, 85, 1) 0%, rgba(9, 9, 121, 1) 40%, rgba(1, 126, 150, 1) 100%);
+      background: -webkit-linear-gradient(0deg, rgba(16, 11, 85, 1) 0%, rgba(9, 9, 121, 1) 40%, rgba(1, 126, 150, 1) 100%);
+      background: linear-gradient(0deg, rgba(16, 11, 85, 1) 0%, rgba(9, 9, 121, 1) 40%, rgba(1, 126, 150, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#100b55", endColorstr="#017e96", GradientType=1);
+    }
 
-  img {
-    width: 100%;
-    max-width: 400px;
-  }
+    .knopf {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      text-transform: uppercase;
+      color: white;
+      padding: 8px;
+      margin: 15px 0px 0px 0px;
+      font-size: 17px;
+      transition: all 0.2s;
+      outline: none;
+      font-family: Abel, Arial;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+      border-radius: 50px;
+      border: 1.5px solid DodgerBlue;
+      background-color: DodgerBlue;
+    }
 
-  .form {
-    width: 80%;
-    max-width: 550px;
-    margin: 50px 20px;
-    padding: 30px 30px;
-    background: white;
-    text-align: left;
-    border-radius: 50px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .2)
-  }
+    .knopf:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+      transition: all 0.2s;
+    }
 
-  .fehlernummer {
-    width: 100%;
-    color: #E6E6E6;
-    font-size: 100px;
-  }
+    img {
+      width: 100%;
+      max-width: 400px;
+    }
 
-  .installer-link {
-    display: block;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-transform: uppercase;
-    color: white;
-    padding: 8px;
-    margin: 15px 0px 0px 0px;
-    font-size: 17px;
-    transition: all 0.2s;
-    outline: none;
-    font-family: Abel, Arial;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
-    border-radius: 50px;
-    border: 1.5px solid DodgerBlue;
-    background-color: DodgerBlue;
-    margin-top: 0.5em;
-    align-content: center;
-  }
-</style>
-<center>
-  <div class="form">
-    <center><img src="./img/input.svg">
-      <p>
-      <h1>Einbindung in lernsax</h1>
-    </center>
-    <h2>Hinweis</h2>
-    Das Addon wird zurzeit noch stark weiterentwickelt! Manche Funktionen können noch etwas stottern, bitte habe
-    etwas Rücksicht dafür. Wenn du einen Bug etc. gefunden hast, dann melde diesen doch bitte bei
-    bistry.elia16@fsg.lernsax.de.
+    .form {
+      width: 80%;
+      max-width: 550px;
+      margin: 50px 20px;
+      padding: 30px 30px;
+      background: white;
+      text-align: left;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .2)
+    }
 
-    <h2>Funktionen</h2>
-    Dieses Addon zeigt Ihnen Ihre Konferenzen direkt in LernSax auf der Startseite an! Für Lehrer werden die Konferenzen
-    der jeweiligen Klasse direkt im Fachlehrerteam angezeigt.
-    <h2>Schritt 1: Addon installieren</h2>
-    Als Erstes musst du das Addon für deinen Browser installieren. Dies ist eigentlich selbsterklärend, du musst nur dem
-    Link zu dem Installer folgen:
-    <br><a class="installer-link"
-      href="https://addons.opera.com/de/extensions/details/09470a795e95751abd2c8a1ce512ea2b25647f1e/">Opera</a>
-    <!-- <a class="installer-link" href="https://microsoftedge.microsoft.com/addons/detail/planungstooladdon/ipnamcnljpgdcgaejoajjgnajeaajapl"
-      disabled>Microsoft Edge</a> -->
-    <a class="installer-link"
-      href="https://chickendevlab.github.io/PlanungstoolAddon/dist/firefox/latest.xpi">Firefox</a>
+    .fehlernummer {
+      width: 100%;
+      color: #E6E6E6;
+      font-size: 100px;
+    }
 
-    <!--<a class="installer-link" href="https://chickendevlab.github.io/PlanungstoolAddon/dist/firefox/latest.xpi" disabled="true">Chrome &
-      Edge</a> -->
-    <br>
-    <em><b>
-        Die Versionen für Chrome und Edge werden zurzeit von Google und Microsoft überprüft, und werden schnellstmöglich
-        nachgetragen (vorrausgesetzt, sie werden nicht abgelehnt). Falls diese Version abgelehnt werden sollte, oder der
-        Überprüfungsprozess sich zu lange hinziehen sollte, werden wir hier außerdem eine Anleitung hinzufügen, wie Sie
-        das Addon manuell installieren können.</b><br><br>
+    .installer-link {
+      display: block;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      text-transform: uppercase;
+      color: white;
+      padding: 8px;
+      margin: 15px 0px 0px 0px;
+      font-size: 17px;
+      transition: all 0.2s;
+      outline: none;
+      font-family: Abel, Arial;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+      border-radius: 50px;
+      border: 1.5px solid DodgerBlue;
+      background-color: DodgerBlue;
+      margin-top: 0.5em;
+      align-content: center;
+    }
+
+    .knopf {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      text-transform: uppercase;
+      color: white;
+      padding: 6px;
+      margin: 2px 0px 10px 0px;
+      font-size: 15px;
+      transition: all 0.2s;
+      outline: none;
+      font-family: Abel, Arial;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+      border-radius: 50px;
+      border: 1.5px solid DodgerBlue;
+      background-color: DodgerBlue;
+    }
+
+    .knopf:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+      transition: all 0.2s;
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+    <div class="form">
+      <center><img src="./index_files/input.svg">
+        <p>
+        </p>
+        <h1>Einbindung in lernsax</h1>
+      </center>
+      <h2>Hinweis</h2>
+      Diese Unterseite wird von Elias aus der 9/4 betreut.<br><br>
+      Das Addon wird zurzeit noch stark weiterentwickelt! Manche Funktionen können noch etwas stottern, bitte haben Sie
+      etwas Rücksicht dafür. Wenn Sie einen Bug etc. gefunden haben, dann melden Sie diesen doch bitte bei
+      bistry.elias16@fsg.lernsax.de oder <a href="https://forms.gle/BU9VhxUzEw8ED3K57" target="_blank">hier</a>.
+
+      <h2>Funktionen</h2>
+      Dieses Addon zeigt Ihnen Ihre Konferenzen direkt in LernSax auf der Startseite an! Für Lehrer werden die
+      Konferenzen
+      der jeweiligen Klasse direkt im Fachlehrerteam angezeigt.
+      <h2>Schritt 1: Addon installieren</h2>
+      Als Erstes müssen Sie das Addon in Ihrem Browser installieren. Dies ist eigentlich selbsterklärend, Sie müssen nur
+      dem
+      Link zu dem Installer folgen:
+      <br><a class="installer-link"
+        href="https://addons.opera.com/de/extensions/details/09470a795e95751abd2c8a1ce512ea2b25647f1e/"
+        target="_blank">Opera</a>
+
+      <a class="installer-link" href="https://chickendevlab.github.io/PlanungstoolAddon/dist/firefox/latest.xpi"
+        target="_blank">Firefox</a>
+
+      <a class="installer-link"
+        href="https://chrome.google.com/webstore/detail/planungstool-addon/efbdnpjbkpihfamaedgpkmggadoknjen?hl=de"
+        target="_blank">Chrome</a>
+
+      <a class="installer-link"
+        href="https://chrome.google.com/webstore/detail/planungstool-addon/efbdnpjbkpihfamaedgpkmggadoknjen?hl=de"
+        target="_blank">Edge</a>
+
+      <em><br><br>
         Für Safari
         wird es allerdings keinen Support geben, da diese zum Veröffentlichen eine Gebühr von ca. 95€/Jahr
         verlangen.</em>
-    <h2>Schritt 2: Addon anzeigen lassen</h2>
-    Dieser Schritt ist nur für Chrome & Opera notwendig.
-    <br>
-    <details>
-      <summary>Opera</summary>
-      Bei Opera ist oben rechts, neben der Adressbar eine Reihe von Zeichen: <img src="img/opera.png">
-      <br>Wenn du das Markierte Symbol anklickst, sollte sich dieses Fenster öffnen: <img src="img/opera2.png">
-      <br>Nun sollte das Addon auch neben der Adressbar angezeigt werden.
-    </details>
-    <details>
-      <summary>Chrome</summary>
-      Bei Chrome ist der Vorgang prinzipiell der selbe Vorgang wie bei Opera, nur das Zeichen für Addons ist ein
-      anderes.
-    </details>
 
-    <h2>Schritt 3: einen Account hinzufügen</h2>
-    Jetzt, wo du das Addon schön sichtbar in deinem Browser hast, musst du nur noch einen Account hinzufügen,
-    damit dir deine Konferenzen in LernSax angezeigt werden:
-    <details>
-      <summary>Lehrer</summary>
-      <div style="padding-left: 1em;">
-        <li>Klicken Sie auf das Addon-Symbol</li>
-        <li>Klicken Sie auf "Klassen & Lehrer-Accounts"</li>
-        <li>Wählen Sie "Hinzufügen" und dann "Lehrer"</li>
-        <li>Geben Sie nun bei LernSax-Namen Ihre LernSax-Email-Adresse ein, sowie bei Klassen-ID Ihre Lehrerkennung auf
-          planungstool-fsg.de</li>
-      </div>
-    </details>
-    <details>
-      <summary>Schüler</summary>
-      <div style="padding-left: 1em;">
-        <ol>
-          <li>Klicke auf das Addon-Symbol</li>
-          <li>Klicke auf "Klassen & Lehrer-Accounts"</li>
-          <li>Wähle "Hinzufügen". Es sollte "Schüler" ausgewählt sein.</li>
-          <li>Gebe nun bei Klassen-ID die ID deiner Klasse auf
-            planungstool-fsg.de ein. Diese ID sind die letzten 4 Buchstaben des Links, der zu deinen Konferenzen führt:
-            <br><br>
-            <center>https://planungstool-fsg.de/id/<b>abcd</b></center>
+      <h2>Schritt 2: Addon anzeigen lassen</h2>
+      Dieser Schritt ist nur für Chrome &amp; Opera notwendig.
+      <br>
+      <details>
+        <summary>Opera</summary>
+        Bei Opera ist oben rechts, neben der Adressbar eine Reihe von Zeichen: <img src="./index_files/opera.png">
+        <br>Wenn Sie das Markierte Symbol anklicken, sollte sich dieses Fenster öffnen: <img
+          src="./index_files/opera2.png">
+        <br>Nun sollte das Addon auch neben der Adressbar angezeigt werden.
+      </details>
+      <details>
+        <summary>Chrome</summary>
+        Bei Chrome ist der Vorgang prinzipiell der selbe Vorgang wie bei Opera, nur das Zeichen für Addons ist ein
+        anderes.
+      </details>
+
+      <h2>Schritt 3: einen Account hinzufügen</h2>
+      Jetzt, wo Sie das Addon schön sichtbar in Ihrem Browser haben, müssen Sie nur noch einen Account hinzufügen,
+      damit Ihnen ihre Konferenzen in LernSax angezeigt werden:
+      <details>
+        <summary>Lehrer</summary>
+        <div style="padding-left: 1em;">
+          <li>Klicken Sie auf das Addon-Symbol oben rechts in der Symbolleiste</li>
+          <li>Klicken Sie auf "Klassen &amp; Lehrer-Accounts"</li>
+          <li>Wählen Sie "Hinzufügen" und dann "Lehrer"</li>
+          <li>Geben Sie nun bei LernSax-Namen Ihre LernSax-Email-Adresse ein. Bei Klassen-ID geben Sie Ihre
+            Lehrerkennung ein, wie sie es auf planungstool-fsg.de gewöhnt sind.</li>
+        </div>
+      </details>
+      <details>
+        <summary>Schüler</summary>
+        <div style="padding-left: 1em;">
+          <ol>
+            <li>Klicken Sie auf das Addon-Symbol oben rechts in der Symbolleiste</li>
+            <li>Klicken Sie auf "Klassen &amp; Lehrer-Accounts"</li>
+            <li>Wählen Sie "Hinzufügen". Es sollte "Schüler" ausgewählt sein.</li>
+            <li>Geben Sie nun bei Klassen-ID die ID Ihrer Klasse auf
+              planungstool-fsg.de ein. Diese ID besteht aus den letzten 4 Buchstaben des Links, der zu Ihren Terminen
+              führt:
+              <br><br>
+              <center>https://planungstool-fsg.de/id/<b>abcd</b></center>
+              <br>
+              Alternativ können Sie auch einfach direkt den Link eingeben.
+            </li>
+          </ol>
+        </div>
+      </details><br>
+      Wenn Sie alles richtig gemacht haben, sollten Ihnen nun auf LernSax Ihre Konferenzen angezeigt werden, direkt auf
+      der
+      Startseite, bzw. für Lehrer im Fachlehrerteam jeder Klasse.
+      <br><br>
+      <details>
+        <summary>Hinweis für Lehrer*innen</summary>
+        <di>
+          Manchmal kann es sein, dass es Ihnen eine Fehlermeldung anzeigt, in der sie aufgefordert werden, die
+          Klassen-IDs
+          neu zu Laden. Hier finden sie dazu nochmal eine Anleitung:
+          <ol>
+            <li>Klicken Sie auf das Addon-Symbol oben rechts in der Symbolleiste</li>
+            <li>Klicken Sie auf Accounts</li>
+            <li>Wählen Sie Ihren Account aus. Es sollte ein Button angezeigt werden mit der Aufschrift "Klassen-IDs
+              erneut
+              laden"</li>
+            <li>Klicken Sie diesen Button</li>
             <br>
-            Alternativ kannst du auch einfach direkt den Link eingeben.
-          </li>
-        </ol>
-      </div>
-    </details><br>
-    Wenn Sie alles richtig gemacht haben, sollten Ihnen nun auf LernSax Ihre Konferenzen angezeigt werden, direkt auf
-    der
-    Startseite, bzw. für Lehrer im Fachlehrerteam jeder Klasse.
-    <br><br>
-    <details>
-      <summary>Hinweis für Lehrer*innen</summary>
-      <di>
-        Manchmal kann es sein, dass es Ihnen eine Fehlermeldung anzeigt, in der sie aufgefordert werden, die Klassen-IDs
-        neu zu Laden. Hier finden sie dazu nochmal eine Anleitung:
-        <ol>
-          <li>Klicken Sie auf das Addon-Symbol</li>
-          <li>Klicken Sie auf Accounts</li>
-          <li>Wählen Sie Ihren Account aus. Es sollte ein Button angezeigt werden mit der Aufschrift "Klassen-IDs erneut
-            laden"</li>
-          <li>Klicken Sie diesen Button</li>
-          <br>
-          Damit sollten alle Klassen-IDs auf Ihrem PC wieder aktuell sein.
-        </ol>
-      </di>
-    </details>
+            Damit sollten alle Klassen-IDs auf Ihrem PC wieder aktuell sein.
+          </ol>
+        </di>
+      </details>
 
-    <h2>Du brauchst Hilfe?</h2>
-    Hilfe erhälst du bei bistry.elias16@fsg.lernsax.de, sowie bei <a
-      href="https://forms.gle/GwXewfCPiDeSsYuFA">diesem</a> Formular.
-  </div>
-  <br>
-  <br><br>
-  <a href="https://planungstool-fsg.de/impressum">Impressum</a> | <a
-    href="https://planungstool-fsg.de/datenschutz">Datenschutz</a>
+      <h2>Die benötigen Hilfe?</h2>
+      Hilfe erhalten sie bei bistry.elias16@fsg.lernsax.de, sowie bei <a
+        href="https://forms.gle/GwXewfCPiDeSsYuFA">diesem</a> Formular.
+    </div>
+    <br>
+    <br><br>
+    <style>
+      .wave-container {
+        background: white;
+        position: relative;
+        color: #FFF;
+        overflow: hidden;
+      }
+
+      .wave-container>svg {
+        display: block;
+      }
+
+      .grey {
+        clear: left;
+        color: white;
+        padding: 0px 40px 40px 40px;
+        text-align: left;
+        margin-top: 40px;
+      }
+
+      .grey h4 {
+        padding-top: 20px;
+        font-family: Montserrat;
+        text-transform: uppercase;
+        color: white;
+        font-size: 1.5em;
+        margin: 0;
+        text-align: left;
+        margin-left: -10px;
+      }
+
+      .grey a {
+        color: white;
+        text-decoration: underline;
+      }
+
+      hr {
+        border: 0;
+        height: 5px;
+        background-image: linear-gradient(to right,
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0, 75),
+            rgba(0, 0, 0, 0));
+
+      }
+    </style>
+
+    <br><br><br><br><br>
+
+
+    <div class="grey">
+      <hr><br><br>
+      <h4>Kontakt</h4>
+      Sollten Sie Fragen oder Anregungen haben, wenden Sie sich an salz.tom15@fsg.lernsax.de.
+
+      <h4>Rechtliches</h4>
+      Der Schutz Ihrer Daten wird ernst genommen. Lesen Sie die <a
+        href="https://planungstool-fsg.de/datenschutz?id=">Datenschutzerklärung</a>, um mehr zu erfahren.<br>
+      Besuchen Sie das <a href="https://planungstool-fsg.de/impressum?id=">Impressum</a>.<p>
+
+        <br><br><br>
+        <a href="https://admin.planungstool-fsg.de/">Admin-Login</a>
+
+        <br><br><br><br>
+        © 2020 Tom Salz
+      </p>
+    </div>
+  </center>
+</body>
+
+</html>
