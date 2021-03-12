@@ -111,11 +111,6 @@ function populateConferences(id) {
                         + (conferencData.inprogress ? '<span style="color: white; font-size: 13px; background-color: #FF5500; padding: 1px 2px; margin:5px 0px 5px 1px;"> JETZT </span>' : ' </summary>'))
                     const conferenceContent = $('<div style="padding-left: 2em; margin-bottom: 10px;"></div>')
                     if (conferencData.type === 'SONSTIGES') { conferenceContent.append('<span>' + conferencData.fach + '</span><br>') }
-                    if (conferencData.href) {
-                        conferenceContent.append('<a href="' + conferencData.href + '" target="_blank">' + conferencData.location + '</a>')
-                    } else if (conferencData.location) {
-                        conferenceContent.append(conferencData.location + '<br>')
-                    }
                     if (conferencData.notice) {
                         conferenceContent.append('<i>' + conferencData.notice)
                     }
