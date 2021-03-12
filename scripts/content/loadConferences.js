@@ -28,34 +28,7 @@ function loadConferences(id) {
                             inprogress: $('.inprogress', $element2).length == 1
 
                         }
-
-                        const hinweis = $('#hinweis', $element2)
-                        if (hinweis.children().length == 1) {
-                            if (hinweis.contents().first().prop('tagName') === 'A') {
-                                if (hinweis.contents().first().attr('href').includes('bbb.schullogin.de')) {
-                                    conference.href = hinweis.contents().first().attr('href')
-                                    conference.location = 'Auf Schullogin.de'
-                                } else {
-                                    conference.href = hinweis.contents().first().attr('href')
-                                    conference.location = 'Externe Plattform'
-                                }
-                            }
-
-                            hinweis.contents().each((index, e) => {
-                                $e = $(e)
-                                if ($e.prop('tagName') === 'A') {
-                                    const data = $e.attr('href')
-                                    if (data.includes('bbb.schullogin.de')) {
-                                        conference.href = data
-                                        conference.location = 'Auf Schullogin.de'
-                                    }
-                                }
-                            })
-                        } else if (hinweis.text().toLowerCase() === 'lernsax') {
-                            conference.location = 'Auf Lernsax'
-                        } else {
-                            conference.notice = hinweis.text()
-                        }
+                        conference.notice = $('#hinweis', $element2).html()
                         days[index1].conferences.push(conference)
 
                     })
@@ -102,7 +75,7 @@ function validateId(input) {
                 })
             } else {
                 let plainName = $('.klasse', $(t)).text()
-                if(plainName.includes('t') || plainName.includes('d')){
+                if (plainName.includes('t') || plainName.includes('d')) {
                     plainName.slice(0, -1)
                 }
                 resolve({
